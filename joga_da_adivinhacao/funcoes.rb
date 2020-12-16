@@ -9,8 +9,10 @@ def da_boas_vindas
 end
 
 def pede_dificuldade
-  puts "Qual o nível de dificuldade que deseja?
-  (1 fácil, 5 difícil)"
+  puts "Qual o nível de dificuldade?"
+  puts "(1) Muito fácil (2) Fácil (3) Normal (4) Difícil
+        (5) Impossível"
+  puts "Escolha: "
   dificuldade = gets.to_i
 end
   
@@ -28,7 +30,7 @@ def sorteia_numero_secreto(dificuldade)
   else
     maximo = 200
   end
-  puts "Escolhendo um número secreto entre 0 e #{maximo - 1}..."
+  puts "Escolhendo um número secreto entre 1 e #{maximo}..."
   sorteado = rand(maximo) + 1
   puts "Escolhido... que tal adivinhar hoje nosso número secreto?"
   sorteado
@@ -46,17 +48,49 @@ end
 
 def verifica_se_acertou(numero_secreto, chute)
   acertou = numero_secreto == chute
-
   if acertou
     puts "Acertou!"
     return true
-  else
-    maior = numero_secreto > chute
-      if maior
-        puts "O número secreto é maior"
-      else
-        puts "O número secreto é menor"
-      end
-      false
   end
+  maior = numero_secreto > chute
+  if maior
+    puts "O número secreto é maior!"
+  else
+    puts "O número secreto é menor!"
+  end
+  false
 end
+
+def joga(nome, dificuldade)
+  numero_secreto = sorteia_numero_secreto dificuldade
+  
+  limite_de_tentativas = 5
+  chutes = []
+  pontos_ate_agora = 1000
+  
+  for tentativa in 1..limite_de_tentativas
+    chute = pede_um_numero chutes, tentativa,
+            limite_de_tentativas
+    chutes << chute
+    
+    if nome == "Antonio"
+      puts "Acertou!"
+      break
+    end
+    
+    pontos_a_perder = (chute - numero_secreto).abs / 2.0
+    pontos_ate_agora = pontos_ate_agora - pontos_a_perder
+    if verifica_se_acertou numero_secreto, chute
+      break
+    end
+  end
+  puts "Você ganhou #{pontos_ate_agora} pontos."
+end
+
+def nao_quer_jogar?
+  puts "Deseja jogar novamente? (S/N)"
+  quero_jogar = gets.strip
+  nao_quero_jogar = quero_jogar.upcase == "N"
+end
+  
+  

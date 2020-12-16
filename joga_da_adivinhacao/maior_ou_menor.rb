@@ -2,26 +2,8 @@ require_relative 'funcoes'
 
 nome = da_boas_vindas
 dificuldade = pede_dificuldade
-numero_secreto = sorteia_numero_secreto(dificuldade)
 
-limite_de_tentativas = 5
-chutes = []
-pontos_ate_agora = 1000
-
-for tentativa in 1..limite_de_tentativas
-  chute = pede_um_numero chutes, tentativa,
-          limite_de_tentativas
-  chutes << chute
-
-  if nome == "Antonio"
-      puts "Acertou!"
-      break
-  end
-
-  pontos_a_perder = (chute - numero_secreto).abs / 2.0
-  pontos_ate_agora = pontos_ate_agora - pontos_a_perder
-  if verifica_se_acertou numero_secreto, chute
-    break
-  end
+loop do
+  joga nome, dificuldade
+  break if nao_quer_jogar?
 end
-puts "Você ganhou #{pontos_ate_agora} pontos."
