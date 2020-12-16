@@ -1,9 +1,10 @@
 require_relative 'funcoes'
 
 da_boas_vindas
-numero_secreto = sorteia_numero_secreto
+dificuldade = pede_dificuldade
+numero_secreto = sorteia_numero_secreto(dificuldade)
 
-limite_de_tentativas = 8
+limite_de_tentativas = 5
 chutes = []
 pontos_ate_agora = 1000
 
