@@ -5,6 +5,7 @@ def da_boas_vindas
   nome = gets.strip
   6.times { puts }
   puts "Começaremos o jogo para você, #{nome}."
+  nome
 end
 
 def pede_dificuldade
@@ -28,7 +29,7 @@ def sorteia_numero_secreto(dificuldade)
     maximo = 200
   end
   puts "Escolhendo um número secreto entre 0 e #{maximo - 1}..."
-  sorteado = rand(maximo)
+  sorteado = rand(maximo) + 1
   puts "Escolhido... que tal adivinhar hoje nosso número secreto?"
   sorteado
 end
