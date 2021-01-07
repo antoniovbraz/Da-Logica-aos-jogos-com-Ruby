@@ -19,7 +19,7 @@ def da_boas_vindas
   puts "_____________¶___¶______¶¶¶______¶___¶"
   puts "_____________¶¶__¶¶_____________¶¶__¶¶"
   puts "______________¶____¶¶¶_______¶¶¶¶___¶"
-  puts "______________¶¶_____¶¶¶¶¶¶¶¶¶_____¶"
+  puts "______________¶__¶___¶¶¶¶¶¶¶¶¶_____¶"
   puts "_______________¶¶¶_______________¶¶"
   puts "_________________¶¶¶___________¶¶¶"
   puts "____________________¶¶¶¶¶¶¶¶¶¶¶"
@@ -29,13 +29,15 @@ def da_boas_vindas
   puts
   puts "Qual o seu nome?"
   nome = gets.strip
-  6.times { puts }
+  2.times { puts }
   puts "Começaremos o jogo para você, #{nome}."
+  puts
   nome
 end
 
 def pede_dificuldade
   puts "Qual o nível de dificuldade?"
+  puts
   puts "(1) Muito fácil (2) Fácil (3) Normal (4) Difícil
         (5) Impossível"
   puts "Escolha: "
@@ -90,7 +92,7 @@ end
 def joga(nome, dificuldade)
   numero_secreto = sorteia_numero_secreto dificuldade
   
-  limite_de_tentativas = 5
+  limite_de_tentativas = 6
   chutes = []
   pontos_ate_agora = 1000
   
@@ -99,10 +101,10 @@ def joga(nome, dificuldade)
             limite_de_tentativas
     chutes << chute
     
-    if nome == "Antonio"
-      puts "Acertou!"
-      break
-    end
+    # if nome == "Arthur"
+    #   puts "Acertou!"
+    #   break
+    # end
     
     pontos_a_perder = (chute - numero_secreto).abs / 2.0
     pontos_ate_agora = pontos_ate_agora - pontos_a_perder
